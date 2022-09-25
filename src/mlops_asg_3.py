@@ -29,7 +29,7 @@ reshaped_images = images.reshape(shape)
 
 xtrain, xtest, ytrain, ytest = train_test_split(reshaped_images, target, random_state=1, 
                                                 stratify=target, test_size=0.2)
-xtrain, xvalid, ytrain, yvalid = train_test_split(xtrain, ytrain, random_state=1, stratify=y_train,
+xtrain, xvalid, ytrain, yvalid = train_test_split(xtrain, ytrain, random_state=1, stratify=ytrain,
                                                   test_size=0.6)
 
 xtrain.shape, xvalid.shape, xtest.shape
@@ -48,7 +48,7 @@ for c in C:
     for gm in gamma:
         model = SVC(C = c, gamma = gm)
         model.fit(xtrain, ytrain)
-        train_acc = model.score(X_train,y_train )
+        train_acc = model.score(xtrain,ytrain )
         valid_acc = model.score(xvalid, yvalid)
         
         C_list.append(c)
